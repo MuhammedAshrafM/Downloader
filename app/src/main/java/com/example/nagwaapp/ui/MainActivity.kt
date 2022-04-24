@@ -86,15 +86,13 @@ class MainActivity : AppCompatActivity() {
     private fun setupAttachmentAdapter() {
         attachmentAdapter =
             AttachmentAdapter(this, onFileLoading = { displayLoading(it) }) { attachment ->
-                lifecycleScope.launch {
 
-                    //Mark the item being downloaded
-                    attachments.find { it.id == attachment.id }?.status = DownloadStatus.LOADING
-                    //Refresh the list
-                    setAttachments()
+                //Mark the item being downloaded
+                attachments.find { it.id == attachment.id }?.status = DownloadStatus.LOADING
+                //Refresh the list
+                setAttachments()
 
-                    downloadFile(attachment)
-                }
+                downloadFile(attachment)
             }
     }
 
