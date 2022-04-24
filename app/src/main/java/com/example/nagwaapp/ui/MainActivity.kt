@@ -5,10 +5,8 @@ import android.app.DownloadManager
 import android.app.ProgressDialog
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.nagwaapp.R
@@ -20,7 +18,6 @@ import com.example.nagwaapp.utils.DownloadManagerUtils
 import com.example.nagwaapp.utils.DownloadManagerUtils.Companion.createFolderAndFile
 import com.example.nagwaapp.utils.LoadingProgressBarDialog
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -71,7 +68,7 @@ class MainActivity : AppCompatActivity() {
                     //Mark the item that was downloaded
                     attachments.find { it.id == attachmentDownloadedId }?.status =
                         DownloadStatus.DONE
-                }else{
+                } else {
                     //Mark the item that was not downloaded
                     attachments.find { it.id == attachmentDownloadedId }?.status =
                         DownloadStatus.INITIAL
